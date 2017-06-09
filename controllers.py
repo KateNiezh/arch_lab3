@@ -19,8 +19,8 @@ class Controller:
     def add_new_subscriber(self):
         sub, num = \
             self.subscriber_view.enter_new_subscriber_and_phone_number()
-        if self.database.find_subscriber('subscriber', sub) is None or \
-           self.database.find_subscriber('phone', num) is None:
+        if self.database.find_subscriber('subscriber', sub) is not None or \
+           self.database.find_subscriber('phone', num) is not None:
             self.message_printer.print_result_of_adding(-1)
             return
         self.message_printer.print_result_of_adding(
